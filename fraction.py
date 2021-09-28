@@ -5,10 +5,13 @@ def pgcd(a,b):
 
 class Fraction:
     def __init__(self, n, d):
-        pass
+        self.n = n
+        self.d = d
+        if d == 0:
+            raise ValueException("denomnateur egal a 0")
     
     def simp(self):
-        pass
+        if n < 0 and 
     
     def __add__(self,other):
         pass
@@ -16,10 +19,23 @@ class Fraction:
     def __sub__(self,other):
         pass
     
-    def __(self,other):
+    def __mul__(self,other):
         pass
     
-    def divide(self,other):
+    def __div__(self,other):
         pass
     
-    def compare
+    def __eq__(self,other):
+        pass
+    
+    def __ge__(self, other):
+        pass
+    
+    def __neg__(self, other):
+        pass
+    
+    def inv(self, others):
+        pass
+    
+    def puissance(self, others):
+        pass
