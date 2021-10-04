@@ -10,22 +10,7 @@ class Fraction:
         if d == 0:
             raise ValueException("denominateur egal a 0")
 
-    def simp(self):
-        if n < 0 and
-
-    def __add__(self,other):
-        pass
-
-    def __sub__(self,other):
-        pass
-
-    def __mul__(self,other):
-        pass
-
-    def __div__(self,other):
-        pass
-
-            raise ValueException("denominateur égale à 0")
+    
     
     def simp(self):
         pgcdLocal = pgcd(self.n,self.d)
