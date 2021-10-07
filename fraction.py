@@ -39,19 +39,19 @@ class Fraction:
 
 
     def __eq__(self,other):
-        1 = simp(Fraction(self.n*other.d, self.d * other.d))
-        2 = simp(Fractions(other.n*self.d, other.d * self.d))
-        if 1.n == 2.n :
+        selff = simp(Fraction(self.n*other.d, self.d * other.d))
+        otherr = simp(Fractions(other.n*self.d, other.d * self.d))
+        if selff.n == otherr.n :
             return True
         else:
             return False
 
     def __ge__(self, other):
-        1 = simp(Fraction(self.n*other.d, self.d * other.d))
-        2 = simp(Fractions(other.n*self.d, other.d * self.d))
-        if 1.n >= 2.n:
+        selff = simp(Fraction(self.n*other.d, self.d * other.d))
+        otherr = simp(Fractions(other.n*self.d, other.d * self.d))
+        if selff.n >= otherr.n:
             return self
-        elif 2.n >= 1.n:
+        elif otherr.n >= selff.n:
             return other
         else:
             return
@@ -60,8 +60,8 @@ class Fraction:
     def __neg__(self):
         return Fraction(-self.n, self.d)
 
-    def inv(self, others):
+    def inv(self):
         return Fraction(self.d,self.n)
 
-    def puissance(self, others):
-        pass
+    def puissance(self, n):
+        return simp(Fraction(self.n**n,self.d**n))
