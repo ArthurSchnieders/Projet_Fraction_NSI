@@ -60,8 +60,8 @@ class Fraction:
     def __neg__(self):
         return Fraction(-self.n, self.d)
 
-    def inv(self, others):
+    def inv(self):
         return Fraction(self.d,self.n)
 
-    def puissance(self, others):
-        pass
+    def puissance(self, n):
+        return Fraction(self.)
