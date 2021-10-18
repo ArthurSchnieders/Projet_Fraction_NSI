@@ -11,7 +11,7 @@ class Fraction:
             raise ValueException("denominateur égale à 0")
     
     def __repr__(self):
-        return f"{self.n}/{self.d}"
+        return(str(self.n)+","+str(self.d))
 
     def simp(self):
         """Permet de simplifier et normaliser une Fraction.
@@ -19,9 +19,11 @@ class Fraction:
         True
         """
         pgcdLocal = pgcd(self.n,self.d)
-        self.n = int(self.n/pgcdLocal)
-        self.d = int(self.d/pgcdLocal)
-
+        print(pgcdLocal)
+        self.n = self.n/pgcdLocal
+        self.d = self.d/pgcdLocal
+        return self
+    
     def __add__(self,other):
         """Permet d'additionner deux objects de types Fraction ensemble.
         >>> Fraction(2,3) + Fraction(4,6) == Fraction(4,3)
@@ -29,7 +31,7 @@ class Fraction:
         """
         self.n = self.n*other.d + other.n * self.d
         self.d = self.d * other.d
-        self.simp()
+        return self.simp()
     
     def __sub__(self,other):
         """Permet de soustraire deux objects de types Fraction.
@@ -73,3 +75,10 @@ class Fraction:
     
     def puissance(self, others):
         pass
+
+
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
