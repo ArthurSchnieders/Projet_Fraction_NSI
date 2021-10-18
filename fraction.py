@@ -29,7 +29,7 @@ class Fraction:
         """
         self.n = self.n*other.d + other.n * self.d
         self.d = self.d * other.d
-        self.simp()
+        return self.simp()
     
     def __sub__(self,other):
         """Permet de soustraire deux objects de types Fraction.
