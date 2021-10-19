@@ -59,6 +59,10 @@ class Fraction:
         return self.simp()
 
     def __eq__(self,other):
+        """Permet de savoir si deux fractions sont egales.
+        >>> Fraction(4,8) == Fraction(1,2) 
+        True
+        """
         selff = Fraction(self.n*other.d, self.d * other.d).simp()
         otherr = Fraction(other.n*self.d, other.d * self.d).simp()
         if selff.n == otherr.n :
@@ -67,6 +71,12 @@ class Fraction:
             return False
 
     def __ge__(self, other):
+        """Permet de savoir si une fraction est superieure ou egale a une autre.
+        >>> Fraction(7,8) >= Fraction(1,2) 
+        True
+        >>> Fraction(1,2) >= Fraction(88,9)
+        False
+        """
         selff = Fraction(self.n*other.d, self.d * other.d).simp()
         otherr = Fraction(other.n*self.d, other.d * self.d).simp()
         if selff.n >= otherr.n:
@@ -76,13 +86,23 @@ class Fraction:
             
 
     def __neg__(self):
+        """Retourne l'oppose d'une fraction
+        >>> -Fraction(4,5)
+        -4/5
+        """
         return Fraction(-self.n, self.d)
 
     def inv(self):
+        """Retourne l'inverse d'une fraction
+        >>> Fraction(1,2).inv()
+        2/1"""
         return Fraction(self.d,self.n)
 
     def puissance(self, n):
-        return simp(Fraction(self.n**n,self.d**n))
+        """Calcule la puissance d'une fraction
+        >>> Fraction(4,5).puissance(2)
+        16/25"""
+        return Fraction(self.n**n,self.d**n).simp()
 
 import doctest
 doctest.testmod(verbose=True)
