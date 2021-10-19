@@ -21,7 +21,7 @@ class Fraction:
         pgcdLocal = pgcd(self.n,self.d)
         self.n = int(self.n/pgcdLocal)
         self.d = int(self.d/pgcdLocal)
-
+        return(self.n,self.d)
     def __add__(self,other):
         """Permet d'additionner deux objects de types Fraction ensemble.
         >>> Fraction(2,3) + Fraction(4,6) == Fraction(4,3)
@@ -73,3 +73,7 @@ class Fraction:
     
     def puissance(self, others):
         pass
+
+
+import doctest
+doctest.testmod()
