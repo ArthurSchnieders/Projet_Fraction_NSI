@@ -8,54 +8,72 @@ class Fraction:
         self.n = n
         self.d = d
         if d == 0:
-            raise ValueException("denominateur egal a 0")
-
-
+            raise ValueException("denominateur égale à 0")
+    
+    def __repr__(self):
+        return f"{self.n}/{self.d}"
 
     def simp(self):
+        """Permet de simplifier et normaliser une Fraction.
+        >>> str(Fraction(12,-15).simp()) == str(Fraction(-4,5))
+        True
+        """
         pgcdLocal = pgcd(self.n,self.d)
-        self.n = self.n/pgcdLocal
-        self.d = self.d/pgcdLocal
-
+        self.n = int(self.n/pgcdLocal)
+        self.d = int(self.d/pgcdLocal)
+        return Fraction(self.n,self.d)
     def __add__(self,other):
+        """Permet d'additionner deux objects de types Fraction ensemble.
+        >>> Fraction(2,3) + Fraction(4,6) == Fraction(4,3)
+        True
+        """
         self.n = self.n*other.d + other.n * self.d
         self.d = self.d * other.d
-        self.simp()
-
+        return self.simp()
+    
     def __sub__(self,other):
+        """Permet de soustraire deux objects de types Fraction.
+        >>> Fraction(2,3) - Fraction(2,6) == Fraction(1,3)
+        True
+        """
         self.n = self.n*other.d - other.n * self.d
         self.d = self.d * other.d
-        self.simp()
-
+        return self.simp()
+    
     def __mul__(self,other):
+        """Permet de multiplier deux objects de types Fraction.
+        >>> Fraction(2,3) * Fraction(2,6) == Fraction(2,9) 
+        True
+        """
         self.n = self.n*other.n
         self.d = self.d*other.d
-        self.simp()
-
-    def __div__(self,other):
+        return self.simp()
+    
+    def __truediv__(self,other):
+        """Permet de diviser deux objects de types Fraction.
+        >>> Fraction(2,3) / Fraction(2,6) == Fraction(2,1) 
+        True
+        """
         self.n = self.n*other.d
         self.d = self.d*other.n
-        self.simp()
-
+        return self.simp()
 
     def __eq__(self,other):
-        selff = simp(Fraction(self.n*other.d, self.d * other.d))
-        otherr = simp(Fractions(other.n*self.d, other.d * self.d))
+        selff = Fraction(self.n*other.d, self.d * other.d).simp()
+        otherr = Fraction(other.n*self.d, other.d * self.d).simp()
         if selff.n == otherr.n :
             return True
         else:
             return False
 
     def __ge__(self, other):
-        selff = simp(Fraction(self.n*other.d, self.d * other.d))
-        otherr = simp(Fractions(other.n*self.d, other.d * self.d))
+        selff = Fraction(self.n*other.d, self.d * other.d).simp()
+        otherr = Fraction(other.n*self.d, other.d * self.d).simp()
         if selff.n >= otherr.n:
-            return self
-        elif otherr.n >= selff.n:
-            return other
+            return True
         else:
-            return
-
+            return False
+            
 
     def __neg__(self):
         return Fraction(-self.n, self.d)
@@ -65,3 +83,6 @@ class Fraction:
 
     def puissance(self, n):
         return simp(Fraction(self.n**n,self.d**n))
+
+import doctest
+doctest.testmod(verbose=True)
